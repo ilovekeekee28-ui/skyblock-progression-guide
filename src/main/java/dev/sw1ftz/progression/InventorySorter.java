@@ -60,7 +60,7 @@ public final class InventorySorter {
 	}
 
 	private void start(Minecraft mc, PlayerProfile profile) {
-		List<Integer> targets = targets(mc.screen);
+		List<Integer> targets = targets(mc.gui.screen());
 		if (targets == null) {
 			return; // shops and menus: do nothing at all
 		}
@@ -68,7 +68,7 @@ public final class InventorySorter {
 			say(mc, "Auto-sort is off. Turn it on with /sbprog autosort (can break Hypixel's mod rules).", ChatFormatting.YELLOW);
 			return;
 		}
-		sorting = mc.screen;
+		sorting = mc.gui.screen();
 		containerId = mc.player.containerMenu.containerId;
 		slots = targets;
 		clicks.clear();
@@ -99,7 +99,7 @@ public final class InventorySorter {
 
 	private void run(Minecraft mc) {
 		AbstractContainerMenu menu = mc.player == null ? null : mc.player.containerMenu;
-		if (menu == null || mc.screen != sorting || menu.containerId != containerId) {
+		if (menu == null || mc.gui.screen() != sorting || menu.containerId != containerId) {
 			sorting = null; // closed: the server gives back anything still held
 			clicks.clear();
 			return;

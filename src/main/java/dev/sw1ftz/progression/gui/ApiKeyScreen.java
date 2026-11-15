@@ -61,7 +61,7 @@ public class ApiKeyScreen extends Screen {
 			profile.apiKey = typed;
 			profile.save();
 		}
-		minecraft.setScreen(parent);
+		minecraft.gui.setScreen(parent);
 	}
 
 	@Override

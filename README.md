@@ -26,7 +26,7 @@ It only reads Hypixel's public API data and the menus you open, and shows it to 
 
 ## Requirements
 
-- Minecraft **26.1.x** with **Fabric Loader**. Works in Lunar Client's Fabric support, Prism, the CurseForge App and the vanilla launcher.
+- Minecraft **26.2** with **Fabric Loader**. Works in Lunar Client's Fabric support, Prism, the CurseForge App and the vanilla launcher.
 - Fabric API is **not** needed. The parts it uses are bundled inside the jar.
 - Client-side only.
 

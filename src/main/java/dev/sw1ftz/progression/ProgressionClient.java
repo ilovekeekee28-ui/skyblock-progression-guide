@@ -127,13 +127,13 @@ public class ProgressionClient implements ClientModInitializer {
 				openNextTick = true;
 			}
 			// Deferred one tick so a command typed in chat doesn't get its screen closed by the chat closing.
-			if (openNextTick && client.screen == null) {
+			if (openNextTick && client.gui.screen() == null) {
 				openNextTick = false;
-				client.setScreen(new ProgressionScreen(null));
+				client.gui.setScreen(new ProgressionScreen(null));
 			}
-			if (openHudNextTick && client.screen == null) {
+			if (openHudNextTick && client.gui.screen() == null) {
 				openHudNextTick = false;
-				client.setScreen(new MoveHudScreen(null));
+				client.gui.setScreen(new MoveHudScreen(null));
 			}
 			if (syncAt != 0 && System.currentTimeMillis() >= syncAt) {
 				syncAt = 0;
@@ -149,7 +149,7 @@ public class ProgressionClient implements ClientModInitializer {
 
 		HudElementRegistry.addLast(Identifier.fromNamespaceAndPath(MOD_ID, "pins"), (graphics, deltaTracker) -> {
 			// The move screen draws the HUD itself.
-			if (!(Minecraft.getInstance().screen instanceof MoveHudScreen)) {
+			if (!(Minecraft.getInstance().gui.screen() instanceof MoveHudScreen)) {
 				PinHud.draw(graphics, false);
 			}
 		});

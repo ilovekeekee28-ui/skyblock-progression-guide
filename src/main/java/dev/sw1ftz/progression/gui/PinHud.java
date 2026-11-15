@@ -42,7 +42,7 @@ public final class PinHud {
 		Minecraft mc = Minecraft.getInstance();
 		PlayerProfile profile = ProgressionClient.get().profile();
 		boolean garden = CopperTracker.inGarden(mc);
-		if (!force && (!profile.showHud || (profile.pins.isEmpty() && !garden) || mc.options.hideGui)) {
+		if (!force && (!profile.showHud || (profile.pins.isEmpty() && !garden) || mc.gui.hud.isHidden())) {
 			return;
 		}
 		Font font = mc.font;

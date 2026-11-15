@@ -96,7 +96,7 @@ public class MoveHudScreen extends Screen {
 	@Override
 	public void onClose() {
 		profile.save();
-		minecraft.setScreen(parent);
+		minecraft.gui.setScreen(parent);
 	}
 
 	@Override

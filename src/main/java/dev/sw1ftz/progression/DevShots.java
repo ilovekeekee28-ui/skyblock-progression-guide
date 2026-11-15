@@ -23,7 +23,7 @@ public final class DevShots {
 	private static void onTick(Minecraft mc) {
 		ProgressionClient client = ProgressionClient.get();
 		if (page < 0) {
-			if (!(mc.screen instanceof TitleScreen) || !client.database().ready() || !client.repo().loaded()) {
+			if (!(mc.gui.screen() instanceof TitleScreen) || !client.database().ready() || !client.repo().loaded()) {
 				return;
 			}
 			seed(client.profile());
@@ -38,10 +38,10 @@ public final class DevShots {
 			String name = PAGES.get(page);
 			var guide = new dev.sw1ftz.progression.gui.ProgressionScreen(null);
 			if (name.equals("MOVEHUD")) {
-				mc.setScreen(new dev.sw1ftz.progression.gui.MoveHudScreen(guide));
+				mc.gui.setScreen(new dev.sw1ftz.progression.gui.MoveHudScreen(guide));
 			} else {
 				client.profile().lastCategory = name;
-				mc.setScreen(new dev.sw1ftz.progression.gui.ProgressionScreen(null));
+				mc.gui.setScreen(new dev.sw1ftz.progression.gui.ProgressionScreen(null));
 			}
 		} else if (tick == 240) {
 			shot(mc, PAGES.get(page).toLowerCase());
@@ -103,7 +103,7 @@ public final class DevShots {
 	}
 
 	private static void shot(Minecraft mc, String name) {
-		Screenshot.grab(mc.gameDirectory, "prog-" + name + ".png", mc.getMainRenderTarget(), 1,
+		Screenshot.grab(mc.gameDirectory, "prog-" + name + ".png", mc.gameRenderer.mainRenderTarget(), 1,
 				msg -> ProgressionClient.LOGGER.info("SHOTS {}", msg.getString()));
 	}
 }

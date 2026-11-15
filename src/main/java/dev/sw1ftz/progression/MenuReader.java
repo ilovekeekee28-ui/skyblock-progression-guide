@@ -59,7 +59,7 @@ public class MenuReader {
 
 	public void tick(Minecraft mc, PlayerProfile profile) {
 		readOwnInventory(mc, profile);
-		if (!(mc.screen instanceof AbstractContainerScreen<?> screen)) {
+		if (!(mc.gui.screen() instanceof AbstractContainerScreen<?> screen)) {
 			lastScreen = null;
 			return;
 		}

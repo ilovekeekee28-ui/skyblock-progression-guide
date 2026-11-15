@@ -122,12 +122,12 @@ public class ProgressionScreen extends Screen {
 		int buttonWidth = Math.min(86, (panelWidth - 16 - SIDEBAR_WIDTH - 8 - gap * 3) / 4);
 		int x = left + panelWidth - 8 - buttonWidth * 4 - gap * 3;
 		addRenderableWidget(Button.builder(Component.literal(profile.apiKey.isBlank() ? "Add API Key" : "API Key"),
-						b -> minecraft.setScreen(new ApiKeyScreen(this)))
+						b -> minecraft.gui.setScreen(new ApiKeyScreen(this)))
 				.bounds(x, buttonY, buttonWidth, 20)
 				.tooltip(Tooltip.create(Component.literal("Add your Hypixel API key so your stats load by themselves.")))
 				.build());
 		x += buttonWidth + gap;
-		addRenderableWidget(Button.builder(Component.literal("My Levels"), b -> minecraft.setScreen(new LevelsScreen(this)))
+		addRenderableWidget(Button.builder(Component.literal("My Levels"), b -> minecraft.gui.setScreen(new LevelsScreen(this)))
 				.bounds(x, buttonY, buttonWidth, 20)
 				.tooltip(Tooltip.create(Component.literal("Set your skill, Catacombs, HOTM and Garden levels.\n"
 						+ "Tip: opening /skills in SkyBlock fills your skills in automatically.")))
@@ -169,7 +169,7 @@ public class ProgressionScreen extends Screen {
 
 	@Override
 	public void onClose() {
-		minecraft.setScreen(parent);
+		minecraft.gui.setScreen(parent);
 	}
 
 	@Override
@@ -600,7 +600,7 @@ public class ProgressionScreen extends Screen {
 			return true;
 		}
 		if (mouseX >= moveLeft && mouseX < moveRight) {
-			minecraft.setScreen(new MoveHudScreen(this));
+			minecraft.gui.setScreen(new MoveHudScreen(this));
 			return true;
 		}
 		return false;
@@ -1100,7 +1100,7 @@ public class ProgressionScreen extends Screen {
 			return;
 		}
 		String name = ProgressionClient.get().database().name(id).replaceAll("§.", "");
-		minecraft.setScreen(null);
+		minecraft.gui.setScreen(null);
 		boolean bazaar = ProgressionClient.get().prices().buyPrice(id) != null;
 		minecraft.player.connection.sendCommand((bazaar ? "bz " : "ahs ") + name);
 	}
@@ -1110,7 +1110,7 @@ public class ProgressionScreen extends Screen {
 		if (minecraft.player == null) {
 			return;
 		}
-		minecraft.setScreen(null);
+		minecraft.gui.setScreen(null);
 		minecraft.player.connection.sendCommand("viewrecipe " + id);
 	}
 
