@@ -1,0 +1,64 @@
+{
+	"_comment": "Hand-written guide data. Levels are suggestions, not exact Hypixel gates. Copy this file to config/skyblockprogression/guide.json to edit it; that copy is used instead. Requirement types: SKILL, HEART_OF_THE_MOUNTAIN, GARDEN_LEVEL, DUNGEON_SKILL, DUNGEON_TIER.",
+	"areas": {
+		"FARMING": [
+			{"name": "The Barn", "info": "Wheat, carrots and potatoes while you start out.", "requires": []},
+			{"name": "Mushroom Desert", "info": "Sugar cane, cactus, mushrooms and cocoa, plus Trevor's animal hunts.", "requires": [{"type": "SKILL", "skill": "FARMING", "level": 5}]},
+			{"name": "Your Garden", "info": "Farm one crop per plot with your crop tool. Jacob's Contests give medals and tickets.", "requires": [{"type": "GARDEN_LEVEL", "level": 1}, {"type": "SKILL", "skill": "FARMING", "level": 10}]},
+			{"name": "Garden (pest hunting)", "info": "Keep farming and kill pests with your vacuum for extra drops.", "requires": [{"type": "GARDEN_LEVEL", "level": 5}, {"type": "SKILL", "skill": "FARMING", "level": 20}]}
+		],
+		"MINING": [
+			{"name": "Gold Mine", "info": "Coal, iron and gold with your first pickaxe.", "requires": []},
+			{"name": "Deep Caverns", "info": "Lapis, redstone, emerald and diamond layers as you go deeper.", "requires": [{"type": "SKILL", "skill": "MINING", "level": 5}]},
+			{"name": "Dwarven Mines", "info": "Mithril and commissions. This is where you unlock Heart of the Mountain.", "requires": [{"type": "SKILL", "skill": "MINING", "level": 12}]},
+			{"name": "Crystal Hollows", "info": "Gemstones and rare Divan's parts. Needs a Crystal Hollows pass.", "requires": [{"type": "HEART_OF_THE_MOUNTAIN", "tier": 3}]},
+			{"name": "Glacite Tunnels", "info": "Glacite, tungsten and umber, plus fossils in Glacite Mineshafts.", "requires": [{"type": "HEART_OF_THE_MOUNTAIN", "tier": 5}]}
+		],
+		"COMBAT": [
+			{"name": "Hub Graveyard", "info": "Zombies at night. Start Revenant Horror (Zombie Slayer) here.", "requires": []},
+			{"name": "Spider's Den", "info": "Spiders and Tarantula Broodfather (Spider Slayer).", "requires": [{"type": "SKILL", "skill": "COMBAT", "level": 1}]},
+			{"name": "The End", "info": "Endermen and Zealots, and Voidgloom Seraph (Enderman Slayer).", "requires": [{"type": "SKILL", "skill": "COMBAT", "level": 12}]},
+			{"name": "Crimson Isle", "info": "Blazes, Inferno Demonlord (Blaze Slayer), faction quests and Kuudra.", "requires": [{"type": "SKILL", "skill": "COMBAT", "level": 24}]}
+		],
+		"FORAGING": [
+			{"name": "The Park", "info": "All the basic log types. More of the Park opens as you level up.", "requires": []},
+			{"name": "Galatea", "info": "Mangrove and fig trees, and the Fig Hew, Figstone and Helix gear.", "requires": [{"type": "SKILL", "skill": "FORAGING", "level": 12}]}
+		],
+		"FISHING": [
+			{"name": "Hub water", "info": "Fish anywhere in the Hub for your first sea creatures.", "requires": []},
+			{"name": "Backwater Bayou", "info": "Bayou sea creatures and good early fishing XP.", "requires": [{"type": "SKILL", "skill": "FISHING", "level": 5}]},
+			{"name": "Crimson Isle lava", "info": "Lava sea creatures and Trophy Fish. Bring a Magma Rod or better.", "requires": [{"type": "SKILL", "skill": "COMBAT", "level": 24}, {"type": "SKILL", "skill": "FISHING", "level": 27}]}
+		],
+		"HUNTING": [
+			{"name": "Galatea", "info": "Track and catch creatures for shards with your Huntaxe, Lasso and Net.", "requires": []}
+		],
+		"DUNGEONS": [
+			{"name": "The Catacombs: Entrance", "info": "Learn the dungeon basics.", "requires": []},
+			{"name": "Floor 1", "info": "Bonzo.", "requires": [{"type": "DUNGEON_SKILL", "dungeon_type": "CATACOMBS", "level": 1}]},
+			{"name": "Floor 2", "info": "Scarf.", "requires": [{"type": "DUNGEON_SKILL", "dungeon_type": "CATACOMBS", "level": 3}, {"type": "DUNGEON_TIER", "dungeon_type": "CATACOMBS", "tier": 1}]},
+			{"name": "Floor 3", "info": "The Professor. Adaptive gear drops here.", "requires": [{"type": "DUNGEON_SKILL", "dungeon_type": "CATACOMBS", "level": 5}, {"type": "DUNGEON_TIER", "dungeon_type": "CATACOMBS", "tier": 2}]},
+			{"name": "Floor 4", "info": "Thorn.", "requires": [{"type": "DUNGEON_SKILL", "dungeon_type": "CATACOMBS", "level": 9}, {"type": "DUNGEON_TIER", "dungeon_type": "CATACOMBS", "tier": 3}]},
+			{"name": "Floor 5", "info": "Livid. Shadow Assassin gear drops here.", "requires": [{"type": "DUNGEON_SKILL", "dungeon_type": "CATACOMBS", "level": 14}, {"type": "DUNGEON_TIER", "dungeon_type": "CATACOMBS", "tier": 4}]},
+			{"name": "Floor 6", "info": "Sadan. Necromancer and Giant's Sword drops.", "requires": [{"type": "DUNGEON_SKILL", "dungeon_type": "CATACOMBS", "level": 19}, {"type": "DUNGEON_TIER", "dungeon_type": "CATACOMBS", "tier": 5}]},
+			{"name": "Floor 7", "info": "Necron. Wither armor and Necron's Handle.", "requires": [{"type": "DUNGEON_SKILL", "dungeon_type": "CATACOMBS", "level": 24}, {"type": "DUNGEON_TIER", "dungeon_type": "CATACOMBS", "tier": 6}]},
+			{"name": "Master Mode", "info": "Harder floors with the best dungeon loot.", "requires": [{"type": "DUNGEON_SKILL", "dungeon_type": "CATACOMBS", "level": 24}, {"type": "DUNGEON_TIER", "dungeon_type": "CATACOMBS", "tier": 7}]}
+		]
+	},
+	"money": [
+		{"name": "Bazaar flipping", "info": "Use the Bazaar Flipper mod to find the best flips for your budget.", "requires": [], "products": []},
+		{"name": "Minions", "info": "Place minions on your island and sell what they make on the Bazaar.", "requires": [], "products": []},
+		{"name": "Farming crops", "info": "Farm the Barn and sell enchanted crops.", "requires": [{"type": "SKILL", "skill": "FARMING", "level": 5}], "products": ["ENCHANTED_WHEAT", "ENCHANTED_CARROT", "ENCHANTED_POTATO"]},
+		{"name": "Zombie and Spider slayer", "info": "Revenant and Tarantula slayer bosses and their drops.", "requires": [{"type": "SKILL", "skill": "COMBAT", "level": 5}], "products": ["REVENANT_FLESH", "TARANTULA_WEB"]},
+		{"name": "Mithril mining", "info": "Mine Mithril and do commissions in the Dwarven Mines.", "requires": [{"type": "SKILL", "skill": "MINING", "level": 12}], "products": ["ENCHANTED_MITHRIL"]},
+		{"name": "Foraging on Galatea", "info": "Chop mangrove and fig logs with your foraging gear.", "requires": [{"type": "SKILL", "skill": "FORAGING", "level": 12}], "products": ["ENCHANTED_MANGROVE_LOG", "ENCHANTED_FIG_LOG"]},
+		{"name": "Sea creature fishing", "info": "Fish up sea creatures and sell their drops.", "requires": [{"type": "SKILL", "skill": "FISHING", "level": 15}], "products": ["ENCHANTED_SPONGE", "ENCHANTED_RAW_SALMON"]},
+		{"name": "Garden farming", "info": "Farm your best crop in the Garden and sell to the Bazaar. Pests add rare drops.", "requires": [{"type": "GARDEN_LEVEL", "level": 3}, {"type": "SKILL", "skill": "FARMING", "level": 20}], "products": ["ENCHANTED_SUGAR_CANE", "ENCHANTED_CACTUS", "ENCHANTED_NETHER_STALK"]},
+		{"name": "Zealots and Enderman slayer", "info": "Zealots in The End for Summoning Eyes, and Voidgloom Seraph drops.", "requires": [{"type": "SKILL", "skill": "COMBAT", "level": 12}], "products": ["NULL_SPHERE", "ENCHANTED_ENDER_PEARL"]},
+		{"name": "Gemstone mining", "info": "Mine gemstones in the Crystal Hollows with a gemstone drill.", "requires": [{"type": "HEART_OF_THE_MOUNTAIN", "tier": 4}], "products": ["FINE_TOPAZ_GEM", "FINE_JADE_GEM", "FINE_RUBY_GEM"]},
+		{"name": "Dungeon floors 5 to 7", "info": "Run floors for chest loot and essence.", "requires": [{"type": "DUNGEON_SKILL", "dungeon_type": "CATACOMBS", "level": 14}, {"type": "DUNGEON_TIER", "dungeon_type": "CATACOMBS", "tier": 4}], "products": ["ESSENCE_WITHER", "ESSENCE_UNDEAD"]},
+		{"name": "Glacite mining", "info": "Tungsten, umber and glacite in the Glacite Tunnels and Mineshafts.", "requires": [{"type": "HEART_OF_THE_MOUNTAIN", "tier": 5}], "products": ["ENCHANTED_TUNGSTEN", "ENCHANTED_UMBER", "ENCHANTED_GLACITE"]},
+		{"name": "Blaze slayer and Crimson Isle", "info": "Inferno Demonlord and Crimson Isle mobs.", "requires": [{"type": "SKILL", "skill": "COMBAT", "level": 24}], "products": ["ENCHANTED_BLAZE_ROD", "ENCHANTED_MAGMA_CREAM"]},
+		{"name": "Kuudra", "info": "Kuudra runs for Kuudra teeth and Crimson armor. Also needs Crimson Isle reputation.", "requires": [{"type": "SKILL", "skill": "COMBAT", "level": 30}], "products": ["KUUDRA_TEETH"]},
+		{"name": "Master Mode dungeons", "info": "The most profitable dungeon runs once you can clear Floor 7.", "requires": [{"type": "DUNGEON_SKILL", "dungeon_type": "CATACOMBS", "level": 24}, {"type": "DUNGEON_TIER", "dungeon_type": "CATACOMBS", "tier": 7}], "products": ["ESSENCE_WITHER"]}
+	]
+}

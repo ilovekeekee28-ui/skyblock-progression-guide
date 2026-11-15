@@ -1,0 +1,24 @@
+{
+	"schemaVersion": 1,
+	"id": "skyblockprogression",
+	"version": "${version}",
+	"name": "SkyBlock Progression",
+	"description": "Shows the best armor, weapon and tool you can use right now for every Hypixel SkyBlock skill, and your next upgrade.",
+	"authors": ["Sw1ftz"],
+	"license": "MIT",
+	"icon": "assets/skyblockprogression/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": ["dev.sw1ftz.progression.ProgressionClient"]
+	},
+	"depends": {
+		"fabricloader": ">=0.17.0",
+		"minecraft": "~26.1",
+		"java": ">=25",
+		"fabric-command-api-v2": "*",
+		"fabric-key-mapping-api-v1": "*",
+		"fabric-lifecycle-events-v1": "*",
+		"fabric-message-api-v1": "*",
+		"fabric-rendering-v1": "*"
+	}
+}
