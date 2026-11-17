@@ -322,7 +322,7 @@ public class ProgressionScreen extends Screen {
 	}
 
 	private List<InfoPages.Row> infoRows() {
-		Object key = List.of(extraPage, ProgressionClient.get().profileVersion(), sortByImpact, profile.upgradeWay, profile.onlyAffordable, profile.museumSetsOnly, profile.accessoriesByMp, search, ProgressionClient.get().repo().museumEntries().size(), database.items().size());
+		Object key = List.of(extraPage, ProgressionClient.get().profileVersion(), sortByImpact, profile.upgradeWay, profile.onlyAffordable, profile.museumSetsOnly, profile.accessorySort, search, ProgressionClient.get().repo().museumEntries().size(), database.items().size());
 		long now = System.currentTimeMillis();
 		// Rebuilt every few seconds too, so prices and "full in" times stay fresh.
 		if (!key.equals(infoKey) || now - infoBuiltAt > 3000) {
@@ -407,14 +407,19 @@ public class ProgressionScreen extends Screen {
 		}
 		wayLeft = -1;
 		if (extraPage.equals("ACCESSORIES")) {
-			String sort = "[Sort: " + (profile.accessoriesByMp ? "Most MP" : "Cheapest per MP") + "]";
+			String sort = "[Sort: " + switch (profile.accessorySort) {
+				case "MP" -> "Most MP";
+				case "CHEAP" -> "Cheapest";
+				case "PRICEY" -> "Most expensive";
+				default -> "Cheapest per MP";
+			} + "]";
 			wayRight = actionLeft - 6;
 			wayLeft = wayRight - font.width(sort);
 			boolean over = mouseX >= wayLeft && mouseX < wayRight && mouseY >= headerY - 3 && mouseY < headerY + 11;
 			graphics.text(font, sort, wayLeft, headerY, over ? Theme.HIGHLIGHT : 0xFF55FFFF, false);
 			if (over) {
-				graphics.setTooltipForNextFrame(font, font.split(Component.literal("Cheapest per MP: best value first. "
-						+ "Most MP: biggest Magical Power gain first. Click to switch."), 220), mouseX, mouseY);
+				graphics.setTooltipForNextFrame(font, font.split(Component.literal("Cheapest per MP: best value first. Most MP: biggest Magical Power gain first. "
+						+ "Cheapest / Most expensive: by price. Click to switch."), 220), mouseX, mouseY);
 			}
 		}
 		if (extraPage.equals("UPGRADES")) {
@@ -615,7 +620,12 @@ public class ProgressionScreen extends Screen {
 		}
 		if (button == 0 && wayLeft >= 0 && mouseX >= wayLeft && mouseX < wayRight && mouseY >= headerY - 3 && mouseY < headerY + 11) {
 			if (extraPage.equals("ACCESSORIES")) {
-				profile.accessoriesByMp = !profile.accessoriesByMp;
+				profile.accessorySort = switch (profile.accessorySort) {
+					case "VALUE" -> "MP";
+					case "MP" -> "CHEAP";
+					case "CHEAP" -> "PRICEY";
+					default -> "VALUE";
+				};
 				profile.save();
 				infoKey = null;
 				moneyScroll = 0;

@@ -191,15 +191,28 @@ final class InfoPages {
 		}
 		List<Advisor.AccessoryPick> picks = Advisor.missingAccessories(profile);
 		List<Advisor.AccessoryPick> now = picks.stream().filter(Advisor.AccessoryPick::canGet).toList();
-		if (profile.accessoriesByMp) {
-			// Most MP first; among equals, the cheaper one per MP.
-			now = now.stream().sorted(Comparator.comparingInt((Advisor.AccessoryPick p) -> -p.powerGain())
-					.thenComparingDouble(Advisor.AccessoryPick::coinsPerPower)).toList();
+		// Price sorts put accessories with no price last.
+		Comparator<Advisor.AccessoryPick> order = switch (profile.accessorySort) {
+			case "MP" -> Comparator.comparingInt((Advisor.AccessoryPick p) -> -p.powerGain())
+					.thenComparingDouble(Advisor.AccessoryPick::coinsPerPower);
+			case "CHEAP" -> Comparator.comparing((Advisor.AccessoryPick p) -> p.price() == null)
+					.thenComparingDouble(p -> p.price() == null ? 0 : p.price());
+			case "PRICEY" -> Comparator.comparing((Advisor.AccessoryPick p) -> p.price() == null)
+					.thenComparingDouble(p -> p.price() == null ? 0 : -p.price());
+			default -> null;
+		};
+		if (order != null) {
+			now = now.stream().sorted(order).toList();
 		}
 		List<Advisor.AccessoryPick> later = picks.stream().filter(p -> !p.canGet())
 				.sorted(Comparator.comparingInt(p -> -p.powerGain())).toList();
 
-		rows.add(Row.section("YOU CAN GET NOW  (" + now.size() + (profile.accessoriesByMp ? ", most Magical Power first)" : ", cheapest per Magical Power first)")));
+		rows.add(Row.section("YOU CAN GET NOW  (" + now.size() + switch (profile.accessorySort) {
+			case "MP" -> ", most Magical Power first)";
+			case "CHEAP" -> ", cheapest first)";
+			case "PRICEY" -> ", most expensive first)";
+			default -> ", cheapest per Magical Power first)";
+		}));
 		for (Advisor.AccessoryPick p : now.subList(0, Math.min(60, now.size()))) {
 			rows.add(accessoryRow(p));
 		}
