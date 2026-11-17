@@ -81,8 +81,8 @@ public class PlayerProfile {
 	public Set<String> museum = new LinkedHashSet<>();
 	/** Museum tab: show only armor sets, or single items too. */
 	public boolean museumSetsOnly = true;
-	/** Accessories tab: sort by most Magical Power instead of cheapest per MP. */
-	public boolean accessoriesByMp = false;
+	/** Accessories tab order: "VALUE" (cheapest per MP), "MP" (most MP), "CHEAP" (lowest price) or "PRICEY" (highest price). */
+	public String accessorySort = "VALUE";
 	/** One-key inventory sort; off unless you turn it on with /sbprog autosort. */
 	public boolean autoSort = false;
 	public int hudX = 6;
@@ -183,6 +183,7 @@ public class PlayerProfile {
 		if (museum == null) museum = defaults.museum;
 		if (pins == null) pins = defaults.pins;
 		if (upgradeWay == null) upgradeWay = defaults.upgradeWay;
+		if (accessorySort == null) accessorySort = defaults.accessorySort;
 		if (lastCategory == null) lastCategory = "FARMING";
 	}
 
